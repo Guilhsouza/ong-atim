@@ -34,8 +34,8 @@ function ProjectExpenseCard({ report }: { report: ProjectReport }) {
                         <div className="mb-2 flex flex-wrap items-center gap-2">
                             <span
                                 className={`rounded-full px-3 py-1 text-xs font-medium ${report.status === "Concluído"
-                                    ? "bg-primary/10 text-primary"
-                                    : "bg-accent/10 text-accent"
+                                    ? "bg-green-400/70 text-primary"
+                                    : "bg-lime-300/70 text-primary"
                                     }`}
                             >
                                 {report.status}

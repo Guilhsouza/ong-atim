@@ -41,7 +41,7 @@ const quickLinks = [
     icon: FileText,
     title: "Transparência",
     description: "Relatórios e prestação de contas",
-    href: "#",
+    href: "/relatorios",
   },
 ]
 
@@ -120,7 +120,7 @@ export function Footer() {
                 <div>
                   <p className="font-medium">E-mail</p>
                   <a href="mailto:contato@esperancaviva.org.br" className="text-primary-foreground/80 hover:underline">
-                    contato@esperancaviva.org.br
+                    contato@atim.org.br
                   </a>
                 </div>
               </div>
@@ -138,9 +138,9 @@ export function Footer() {
                 <div>
                   <p className="font-medium">Endereço</p>
                   <p className="text-primary-foreground/80">
-                    Rua da Esperança, 123 - Centro
+                    Rua XPTO, 123 - Centro
                     <br />
-                    São Paulo - SP, 01000-000
+                    Taubaté - SP, 01000-000
                   </p>
                 </div>
               </div>
@@ -185,7 +185,7 @@ export function Footer() {
         <div className="border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
             <div>
-              <p className="font-medium">ONG Esperança Viva</p>
+              <p className="font-medium">ONG ATIM - Amo Tudo Isso Muito</p>
               <p className="text-sm text-primary-foreground/70">CNPJ: 00.000.000/0001-00</p>
             </div>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-primary-foreground/70">
@@ -201,7 +201,7 @@ export function Footer() {
             </div>
           </div>
           <p className="mt-4 text-center text-sm text-primary-foreground/60">
-            2024 ONG Esperança Viva. Todos os direitos reservados.
+            2026 ONG ATIM - Amo Tudo Isso Muito. Todos os direitos reservados.
           </p>
         </div>
       </div>

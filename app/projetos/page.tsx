@@ -68,7 +68,7 @@ function ProjectCarousel({
                         <button
                             key={index}
                             onClick={() => setCurrentIndex(index)}
-                            className={`h-2 w-2 rounded-full transition-colors ${index === currentIndex ? "bg-primary" : "bg-border"
+                            className={`h-2 w-2 rounded-full  transition-colors ${index === currentIndex ? "bg-primary" : "bg-border"
                                 }`}
                             aria-label={`Ir para imagem ${index + 1}`}
                         />
@@ -76,6 +76,7 @@ function ProjectCarousel({
                 </div>
                 <Button
                     variant="outline"
+                    className="cursor-pointer"
                     size="sm"
                     onClick={() => {
                         setShowAfter(!showAfter)
@@ -224,16 +225,17 @@ export default function ProjetosPage() {
                             <Button
                                 size="lg"
                                 variant="secondary"
+                                className="cursor-pointer"
                                 onClick={() => {
-                                    window.location.href = "/#contact"
+                                    window.location.href = "/#footer"
                                 }}
                             >
                                 Seja um Doador
                             </Button>
                             <Button
                                 size="lg"
-                                variant="outline"
-                                className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
+                                variant="secondary"
+                                className="text-primary cursor-pointer hover:"
                                 onClick={() => {
                                     window.location.href = "/#sponsors"
                                 }}

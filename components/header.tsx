@@ -10,6 +10,7 @@ const navLinks = [
     { label: "Início", href: "/", type: "link" },
     { label: "Padrinhos", href: "#sponsors", type: "scroll" },
     { label: "Projetos", href: "/projetos", type: "link" },
+    { label: "Relatórios", href: "/relatorios", type: "link" },
     { label: "Contato", href: "#footer", type: "scroll" },
 ]
 

@@ -106,7 +106,7 @@ export function Footer() {
                 rows={4}
                 className="border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/60"
               />
-              <Button type="submit" variant="secondary" size="lg" className="w-full sm:w-auto">
+              <Button type="submit" variant="secondary" size="lg" className="w-full cursor-pointer sm:w-auto">
                 Enviar Mensagem
               </Button>
             </form>

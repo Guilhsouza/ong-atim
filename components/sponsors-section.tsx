@@ -1,18 +1,20 @@
 "use client"
 
 import { Heart } from "lucide-react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { exemplo } from "@/public/images/padrinhos/index"
 
 const sponsors = [
-  { name: "Maria Silva", type: "Madrinha" },
-  { name: "João Santos", type: "Padrinho" },
-  { name: "Ana Oliveira", type: "Madrinha" },
-  { name: "Carlos Pereira", type: "Padrinho" },
-  { name: "Lucia Fernandes", type: "Madrinha" },
-  { name: "Roberto Costa", type: "Padrinho" },
-  { name: "Patricia Lima", type: "Madrinha" },
-  { name: "Fernando Alves", type: "Padrinho" },
+  { name: "Guilherme Souza", type: "Padrinho", image: exemplo },
+  { name: "João Santos", type: "Padrinho", image: null },
+  { name: "Ana Oliveira", type: "Madrinha", image: null },
+  { name: "Carlos Pereira", type: "Padrinho", image: null },
+  { name: "Lucia Fernandes", type: "Madrinha", image: null },
+  { name: "Roberto Costa", type: "Padrinho", image: null },
+  { name: "Patricia Lima", type: "Madrinha", image: null },
+  { name: "Fernando Alves", type: "Padrinho", image: null },
 ]
 
 const partners = [
@@ -44,9 +46,20 @@ export function SponsorsSection() {
               key={index}
               className="flex flex-col items-center rounded-xl bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
             >
-              <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">
-                {sponsor.name.split(" ").map((n) => n[0]).join("")}
-              </div>
+              {sponsor.image ? (
+                <div className="relative mb-3 h-16 w-16 overflow-hidden rounded-full">
+                  <Image
+                    src={sponsor.image}
+                    alt={sponsor.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">
+                  {sponsor.name.split(" ").map((n) => n[0]).join("")}
+                </div>
+              )}
               <p className="text-center font-medium text-foreground">{sponsor.name}</p>
               <span className="text-sm text-muted-foreground">{sponsor.type}</span>
             </div>

@@ -20,12 +20,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 const quickLinks = [
   {
-    icon: Heart,
-    title: "Seja um Padrinho",
-    description: "Apadrinhe uma criança ou projeto",
-    href: "#",
-  },
-  {
     icon: Building2,
     title: "Pessoa Jurídica",
     description: "Parcerias corporativas e doações",
@@ -161,7 +155,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {quickLinks.map((link) => (
             <Card
               key={link.title}

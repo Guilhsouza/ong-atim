@@ -88,14 +88,16 @@ export function Header() {
                 </Link>
 
                 <nav className="hidden items-center gap-1 md:flex">
-                    {navLinks.map((link) =>
-                        link.type === "link" ? (
+                    {navLinks.map((link) => {
+                        const isActive = pathname === link.href
+
+                        return link.type === "link" ? (
                             <Link
                                 key={link.href}
                                 href={link.href}
                                 className={`rounded-lg px-4 py-2 font-medium transition-colors ${isScrolled || pathname !== "/"
-                                    ? "text-foreground hover:bg-secondary"
-                                    : "text-card hover:bg-card/20"
+                                    ? `text-foreground hover:bg-secondary ${isActive ? "bg-secondary" : ""}`
+                                    : `text-card hover:bg-card/20 ${isActive ? "bg-card/20" : ""}`
                                     }`}
                             >
                                 {link.label}
@@ -112,7 +114,7 @@ export function Header() {
                                 {link.label}
                             </button>
                         )
-                    )}
+                    })}
                     <Button
                         onClick={() => scrollToSection("#footer")}
                         className="ml-2"
@@ -159,7 +161,7 @@ export function Header() {
                             )
                         )}
                         <Button
-                            onClick={() => scrollToSection("#contact")}
+                            onClick={() => scrollToSection("#footer")}
                             className="mt-2 w-full"
                         >
                             Doe Agora

@@ -4,27 +4,7 @@ import { Heart } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { exemplo } from "@/public/images/padrinhos/index"
-
-const sponsors = [
-  { name: "Guilherme Souza", type: "Padrinho", image: exemplo },
-  { name: "João Santos", type: "Padrinho", image: null },
-  { name: "Ana Oliveira", type: "Madrinha", image: null },
-  { name: "Carlos Pereira", type: "Padrinho", image: null },
-  { name: "Lucia Fernandes", type: "Madrinha", image: null },
-  { name: "Roberto Costa", type: "Padrinho", image: null },
-  { name: "Patricia Lima", type: "Madrinha", image: null },
-  { name: "Fernando Alves", type: "Padrinho", image: null },
-]
-
-const partners = [
-  "Mercado Bom Preço",
-  "Padaria União",
-  "Farmácia Vida",
-  "Auto Peças Centro",
-  "Construtora Horizonte",
-  "Supermercado Família",
-]
+import { sponsors, collaborators, companies } from "@/data/sponsors"
 
 export function SponsorsSection() {
   return (
@@ -70,14 +50,45 @@ export function SponsorsSection() {
           <h3 className="mb-6 text-center text-xl font-semibold text-foreground">
             Empresas Parceiras
           </h3>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+            {companies.map((company, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center rounded-xl bg-card p-4 shadow-sm transition-shadow hover:shadow-md"
+              >
+                {company.logo ? (
+                  <div className="relative mb-3 h-14 w-14 overflow-hidden rounded-full">
+                    <Image
+                      src={company.logo}
+                      alt={company.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground">
+                    {company.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+                  </div>
+                )}
+                <p className="text-center text-sm font-medium text-foreground">{company.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-12">
+          <h3 className="mb-6 text-center text-xl font-semibold text-foreground">
+            Parceiros Colaboradores
+          </h3>
           <div className="flex flex-wrap justify-center gap-3">
-            {partners.map((partner, index) => (
+            {collaborators.map((collaborator, index) => (
               <Badge
                 key={index}
                 variant="outline"
-                className="px-4 py-2 text-sm"
+                className="flex flex-col items-center gap-0.5 px-4 py-2"
               >
-                {partner}
+                <span className="text-sm font-medium">{collaborator.name}</span>
+                <span className="text-xs text-muted-foreground">{collaborator.role}</span>
               </Badge>
             ))}
           </div>

@@ -117,7 +117,7 @@ export default function ProjetosPage() {
                             <p className="text-sm text-muted-foreground">Projetos Realizados</p>
                         </div>
                         <div className="text-center">
-                            <p className="text-3xl font-bold text-primary">R$ 922k+</p>
+                            <p className="text-3xl font-bold text-primary">R$ 900k+</p>
                             <p className="text-sm text-muted-foreground">Investidos</p>
                         </div>
                         <div className="text-center">

@@ -62,10 +62,6 @@ function ProjectExpenseCard({ report }: { report: ProjectReport }) {
                 <CardContent className="border-t border-border pt-6">
                     <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <h4 className="font-semibold text-foreground">Detalhamento de Gastos</h4>
-                        <Button variant="outline" size="sm" className="w-full sm:w-auto">
-                            <Download className="mr-2 h-4 w-4" />
-                            Baixar PDF
-                        </Button>
                     </div>
 
                     <div className="space-y-3">
@@ -130,7 +126,7 @@ export default function RelatoriosPage() {
         <>
             <Header />
             <main className="min-h-screen bg-background pt-20">
-                {/* Hero Section */}
+
                 <section className="bg-primary py-16 text-primary-foreground">
                     <div className="mx-auto max-w-6xl px-4 text-center">
                         <h1 className="mb-4 text-balance text-3xl font-bold sm:text-4xl md:text-5xl">

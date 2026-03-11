@@ -152,8 +152,8 @@ export default function ProjetosPage() {
                                                 <div className="mb-2 flex items-center gap-2">
                                                     <span
                                                         className={`rounded-full px-3 py-1 text-xs font-medium ${project.status === "Concluído"
-                                                            ? "bg-primary/10 text-primary"
-                                                            : "bg-accent/10 text-accent"
+                                                            ? "bg-green-400/70 text-primary"
+                                                            : "bg-lime-300/70 text-primary"
                                                             }`}
                                                     >
                                                         {project.status}

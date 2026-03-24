@@ -45,12 +45,14 @@ export function ProjectsSection() {
           {featuredProjects.map((project) => (
             <Card key={project.id} className="group overflow-hidden border-0 bg-card shadow-lg transition-shadow hover:shadow-xl">
               <div className="relative aspect-video overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
+                <Link href={`/projetos#project-${project.id}`}>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105"
+                  />
+                </Link>
               </div>
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg text-foreground">

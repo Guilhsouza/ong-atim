@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight, ArrowLeftRight, Calendar, Users, DollarSign, MapPin } from "lucide-react"
+import { ChevronLeft, ChevronRight, ArrowLeftRight, Calendar, Users, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Header } from "@/components/header"
@@ -21,14 +21,6 @@ function ProjectCarousel({
 
     const images = showAfter ? afterImages : beforeImages
 
-    const nextImage = () => {
-        setCurrentIndex((prev) => (prev + 1) % images.length)
-    }
-
-    const prevImage = () => {
-        setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
-    }
-
     return (
         <div className="relative">
             <div className="relative aspect-video overflow-hidden rounded-lg">
@@ -36,9 +28,9 @@ function ProjectCarousel({
                     src={images[currentIndex]}
                     alt={showAfter ? "Depois" : "Antes"}
                     fill
-                    className="object-cover transition-opacity duration-500"
+                    className="object-cover"
                 />
-                <div className="absolute left-3 top-3 rounded-full bg-foreground/80 px-3 py-1 text-sm font-medium text-background">
+                <div className="absolute left-3 top-3 rounded-full bg-foreground/80 px-3 py-1 text-sm text-background">
                     {showAfter ? "Depois" : "Antes"}
                 </div>
             </div>
@@ -46,18 +38,17 @@ function ProjectCarousel({
             {images.length > 1 && (
                 <>
                     <button
-                        onClick={prevImage}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-card/80 p-2 shadow-md transition-colors hover:bg-card"
-                        aria-label="Imagem anterior"
+                        onClick={() => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-card/80 p-2"
                     >
-                        <ChevronLeft className="h-4 w-4 text-foreground" />
+                        <ChevronLeft className="h-4 w-4" />
                     </button>
+
                     <button
-                        onClick={nextImage}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-card/80 p-2 shadow-md transition-colors hover:bg-card"
-                        aria-label="Próxima imagem"
+                        onClick={() => setCurrentIndex((prev) => (prev + 1) % images.length)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-card/80 p-2"
                     >
-                        <ChevronRight className="h-4 w-4 text-foreground" />
+                        <ChevronRight className="h-4 w-4" />
                     </button>
                 </>
             )}
@@ -68,15 +59,13 @@ function ProjectCarousel({
                         <button
                             key={index}
                             onClick={() => setCurrentIndex(index)}
-                            className={`h-2 w-2 rounded-full  transition-colors ${index === currentIndex ? "bg-primary" : "bg-border"
-                                }`}
-                            aria-label={`Ir para imagem ${index + 1}`}
+                            className={`h-2 w-2 rounded-full ${index === currentIndex ? "bg-primary" : "bg-border"}`}
                         />
                     ))}
                 </div>
+
                 <Button
                     variant="outline"
-                    className="cursor-pointer"
                     size="sm"
                     onClick={() => {
                         setShowAfter(!showAfter)
@@ -92,36 +81,46 @@ function ProjectCarousel({
 }
 
 export default function ProjetosPage() {
+
+    useEffect(() => {
+        if (window.location.hash) {
+            const id = window.location.hash.replace("#", "")
+            const el = document.getElementById(id)
+
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView({ behavior: "smooth" })
+                }, 100)
+            }
+        }
+    }, [])
+
     return (
         <>
             <Header />
+
             <main className="min-h-screen bg-background pt-20">
-                {/* Hero Section */}
+
                 <section className="bg-primary py-16 text-primary-foreground">
                     <div className="mx-auto max-w-6xl px-4 text-center">
-                        <h1 className="mb-4 text-balance text-4xl font-bold md:text-5xl">
-                            Nossos Projetos
+                        <h1 className="mb-4 text-4xl font-bold md:text-5xl">
+                            Entidades Atendidas
                         </h1>
-                        <p className="mx-auto max-w-2xl text-pretty text-lg opacity-90">
-                            Conheça em detalhes todas as transformações que realizamos em nossa comunidade.
-                            Cada projeto representa uma história de esperança, superação e impacto social real.
+                        <p className="mx-auto max-w-2xl text-lg opacity-90">
+                            Conheça as transformações que realizamos na comunidade.
                         </p>
                     </div>
                 </section>
 
-                <section className="border-b border-border bg-card py-12">
-                    <div className="mx-auto grid max-w-4xl grid-cols-2 gap-8 px-4 md:grid-cols-4">
+                <section className="border-b bg-card py-12">
+                    <div className="mx-auto grid max-w-4xl grid-cols-2 gap-8 px-4 md:grid-cols-3">
                         <div className="text-center">
                             <p className="text-3xl font-bold text-primary">{project.length}</p>
-                            <p className="text-sm text-muted-foreground">Projetos Realizados</p>
-                        </div>
-                        <div className="text-center">
-                            <p className="text-3xl font-bold text-primary">R$ 900k+</p>
-                            <p className="text-sm text-muted-foreground">Investidos</p>
+                            <p className="text-sm text-muted-foreground">Projetos</p>
                         </div>
                         <div className="text-center">
                             <p className="text-3xl font-bold text-primary">3.000+</p>
-                            <p className="text-sm text-muted-foreground">Pessoas Beneficiadas</p>
+                            <p className="text-sm text-muted-foreground">Pessoas</p>
                         </div>
                         <div className="text-center">
                             <p className="text-3xl font-bold text-primary">150+</p>
@@ -131,118 +130,66 @@ export default function ProjetosPage() {
                 </section>
 
                 <section className="py-16">
-                    <div className="mx-auto max-w-6xl px-4">
-                        <div className="space-y-12">
-                            {project.map((project, index) => (
-                                <Card key={project.id} className="overflow-hidden border-0 bg-card shadow-lg">
-                                    <div
-                                        className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                                            }`}
-                                    >
-                                        <div className="p-6 lg:w-1/2">
-                                            <ProjectCarousel
-                                                beforeImages={project.beforeImages}
-                                                afterImages={project.afterImages}
-                                            />
-                                        </div>
-                                        <div className="flex flex-col justify-center p-6 lg:w-1/2">
-                                            <CardHeader className="p-0">
-                                                <div className="mb-2 flex items-center gap-2">
-                                                    <span
-                                                        className={`rounded-full px-3 py-1 text-xs font-medium ${project.status === "Concluído"
-                                                            ? "bg-green-400/70 text-primary"
-                                                            : "bg-lime-300/70 text-primary"
-                                                            }`}
-                                                    >
-                                                        {project.status}
-                                                    </span>
-                                                </div>
-                                                <CardTitle className="mb-2 text-2xl text-foreground">
-                                                    {project.title}
-                                                </CardTitle>
-                                                <CardDescription className="text-base font-medium text-muted-foreground">
-                                                    {project.shortDescription}
-                                                </CardDescription>
-                                            </CardHeader>
-                                            <CardContent className="p-0 pt-4">
-                                                <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-                                                    {project.fullDescription}
-                                                </p>
+                    <div className="mx-auto max-w-6xl px-4 space-y-12">
+                        {project.map((project, index) => (
+                            <Card
+                                key={project.id}
+                                id={`project-${project.id}`} // ✅ padrão correto
+                                className="scroll-mt-24 overflow-hidden border-0 bg-card shadow-lg"
+                            >
+                                <div className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"}`}>
 
-                                                <div className="grid grid-cols-2 gap-4">
-                                                    <div className="flex items-center gap-2 text-sm">
-                                                        <DollarSign className="h-4 w-4 text-primary" />
-                                                        <div>
-                                                            <p className="font-medium text-foreground">{project.investimento}</p>
-                                                            <p className="text-xs text-muted-foreground">Investimento</p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="flex items-center gap-2 text-sm">
-                                                        <Users className="h-4 w-4 text-primary" />
-                                                        <div>
-                                                            <p className="font-medium text-foreground">{project.beneficiados}</p>
-                                                            <p className="text-xs text-muted-foreground">Beneficiados</p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="flex items-center gap-2 text-sm">
-                                                        <Calendar className="h-4 w-4 text-primary" />
-                                                        <div>
-                                                            <p className="font-medium text-foreground">
-                                                                {project.dataInicio} - {project.dataConclusao}
-                                                            </p>
-                                                            <p className="text-xs text-muted-foreground">Período</p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="flex items-center gap-2 text-sm">
-                                                        <MapPin className="h-4 w-4 text-primary" />
-                                                        <div>
-                                                            <p className="font-medium text-foreground">{project.localizacao}</p>
-                                                            <p className="text-xs text-muted-foreground">Localização</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </CardContent>
-                                        </div>
+                                    <div className="p-6 lg:w-1/2">
+                                        <ProjectCarousel
+                                            beforeImages={project.beforeImages}
+                                            afterImages={project.afterImages}
+                                        />
                                     </div>
-                                </Card>
-                            ))}
-                        </div>
+
+                                    <div className="flex flex-col justify-center p-6 lg:w-1/2">
+                                        <CardHeader className="p-0">
+                                            <CardTitle className="text-2xl">{project.title}</CardTitle>
+                                            <CardDescription>{project.shortDescription}</CardDescription>
+                                        </CardHeader>
+
+                                        <CardContent className="p-0 pt-4">
+                                            <p className="mb-6 text-sm text-muted-foreground">
+                                                {project.fullDescription}
+                                            </p>
+
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
+
+                                                <div className="flex flex-col items-center">
+                                                    <Users className="h-4 w-4 text-primary mb-1" />
+                                                    <p className="font-medium">{project.beneficiados}</p>
+                                                    <span className="text-xs text-muted-foreground">Beneficiados</span>
+                                                </div>
+
+                                                <div className="flex flex-col items-center">
+                                                    <Calendar className="h-4 w-4 text-primary mb-1" />
+                                                    <p className="font-medium">
+                                                        {project.dataInicio} - {project.dataConclusao}
+                                                    </p>
+                                                    <span className="text-xs text-muted-foreground">Período</span>
+                                                </div>
+
+                                                <div className="flex flex-col items-center">
+                                                    <MapPin className="h-4 w-4 text-primary mb-1" />
+                                                    <p className="font-medium">{project.localizacao}</p>
+                                                    <span className="text-xs text-muted-foreground">Localização</span>
+                                                </div>
+
+                                            </div>
+                                        </CardContent>
+                                    </div>
+                                </div>
+                            </Card>
+                        ))}
                     </div>
                 </section>
 
-                <section className="bg-primary py-16 text-primary-foreground">
-                    <div className="mx-auto max-w-4xl px-4 text-center">
-                        <h2 className="mb-4 text-balance text-3xl font-bold">
-                            Quer Apoiar Nossos Projetos?
-                        </h2>
-                        <p className="mx-auto mb-8 max-w-2xl text-pretty opacity-90">
-                            Com sua ajuda, podemos continuar transformando vidas e construindo um futuro melhor para nossa comunidade.
-                        </p>
-                        <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                            <Button
-                                size="lg"
-                                variant="secondary"
-                                className="cursor-pointer"
-                                onClick={() => {
-                                    window.location.href = "/#footer"
-                                }}
-                            >
-                                Seja um Doador
-                            </Button>
-                            <Button
-                                size="lg"
-                                variant="secondary"
-                                className="text-primary cursor-pointer hover:"
-                                onClick={() => {
-                                    window.location.href = "/#sponsors"
-                                }}
-                            >
-                                Conheça Nossos Padrinhos
-                            </Button>
-                        </div>
-                    </div>
-                </section>
             </main>
+
             <Footer />
         </>
     )

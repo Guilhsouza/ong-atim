@@ -10,21 +10,13 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import logoAtim from '../public/logo-ATIM.jpg'
 import { HeroMenu } from "./heroMenu"
-import { AnchorHTMLAttributes, useEffect, useState } from "react"
+import navLinks from "@/data/navLinks"
 
 export function HeroCarousel({ heroRef }: {
   heroRef: React.RefObject<HTMLElement | null>
 
 }) {
   const router = useRouter()
-
-  const navLinks: NavLink[] = [
-    { label: "Início", href: "/", type: "link" },
-    { label: "Padrinhos", href: "#sponsors", type: "scroll" },
-    { label: "Projetos", href: "/projetos", type: "link" },
-    { label: "Relatórios", href: "/relatorios", type: "link" },
-    { label: "Contato", href: "#footer", type: "scroll" },
-  ]
 
   const handleNavClick = (link: NavLink) => {
     if (link.type === "scroll") {

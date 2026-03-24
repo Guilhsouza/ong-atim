@@ -26,12 +26,6 @@ const quickLinks = [
     href: "#",
   },
   {
-    icon: Users,
-    title: "Voluntariado",
-    description: "Doe seu tempo e talento",
-    href: "#",
-  },
-  {
     icon: FileText,
     title: "Transparência",
     description: "Relatórios e prestação de contas",
@@ -155,7 +149,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-12 grid gap-4 sm:grid-cols-1 lg:grid-cols-2">
           {quickLinks.map((link) => (
             <Card
               key={link.title}

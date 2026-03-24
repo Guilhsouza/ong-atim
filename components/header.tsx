@@ -7,19 +7,12 @@ import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import logo from '@/public/logo-ATIM.jpg'
-
-const navLinks = [
-    { label: "Início", href: "/", type: "link" },
-    { label: "Padrinhos", href: "#sponsors", type: "scroll" },
-    { label: "Projetos", href: "/projetos", type: "link" },
-    { label: "Relatórios", href: "/relatorios", type: "link" },
-    { label: "Contato", href: "#footer", type: "scroll" },
-]
+import navLinks from "@/data/navLinks"
 
 export function Header({
     heroRef,
 }: {
-    heroRef: React.RefObject<HTMLElement | null>
+    heroRef?: React.RefObject<HTMLElement | null>
 }) {
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -33,7 +26,7 @@ export function Header({
                 return
             }
 
-            const hero = heroRef.current
+            const hero = heroRef?.current
             if (!hero) return
 
             const rect = hero.getBoundingClientRect()
@@ -90,11 +83,14 @@ export function Header({
             >
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
 
-                    {/* LOGO */}
                     <Link href="/" className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
-                            <span className="text-lg font-bold text-primary-foreground">
-                                ATIM
+                        <div className="flex h-12 w-12 items-center justify-center">
+                            <span className="text-lg font-bold">
+                                <Image
+                                    alt="logo"
+                                    src={logo}
+                                    className="rounded-full"
+                                />
                             </span>
                         </div>
                         <span className="text-xl font-bold text-foreground">
@@ -104,6 +100,20 @@ export function Header({
 
                     {/* NAV */}
                     <nav className="hidden md:flex items-center gap-1">
+                        <button
+                            onClick={() => {
+                                if (pathname === "/") {
+                                    window.scrollTo({ top: 0, behavior: "smooth" })
+                                } else {
+                                    router.push("/")
+                                }
+                                setIsMobileMenuOpen(false)
+                            }}
+                            className="rounded-lg px-4 py-2 font-medium text-foreground hover:bg-secondary"
+                        >
+                            Início
+                        </button>
+
                         {navLinks.map((link) =>
                             link.type === "link" ? (
                                 <Link

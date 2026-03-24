@@ -109,7 +109,6 @@ export default function ProjetosPage() {
                     </div>
                 </section>
 
-                {/* Stats Section */}
                 <section className="border-b border-border bg-card py-12">
                     <div className="mx-auto grid max-w-4xl grid-cols-2 gap-8 px-4 md:grid-cols-4">
                         <div className="text-center">
@@ -131,7 +130,6 @@ export default function ProjetosPage() {
                     </div>
                 </section>
 
-                {/* Projects List */}
                 <section className="py-16">
                     <div className="mx-auto max-w-6xl px-4">
                         <div className="space-y-12">
@@ -212,7 +210,6 @@ export default function ProjetosPage() {
                     </div>
                 </section>
 
-                {/* CTA Section */}
                 <section className="bg-primary py-16 text-primary-foreground">
                     <div className="mx-auto max-w-4xl px-4 text-center">
                         <h2 className="mb-4 text-balance text-3xl font-bold">

@@ -29,7 +29,7 @@ const quickLinks = [
     icon: FileText,
     title: "Transparência",
     description: "Relatórios e prestação de contas",
-    href: "/relatorios",
+    href: "/documentos",
   },
 ]
 

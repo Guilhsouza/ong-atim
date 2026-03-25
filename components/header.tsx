@@ -83,7 +83,14 @@ export function Header({
             >
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
 
-                    <Link href="/" className="flex items-center gap-3">
+                    <Link href="/"
+                        onClick={(e) => {
+                            if (pathname === "/") {
+                                e.preventDefault()
+                                window.scrollTo({ top: 0, behavior: "smooth" })
+                            }
+                        }}
+                        className="flex items-center gap-3">
                         <div className="flex h-12 w-12 items-center justify-center">
                             <span className="text-lg font-bold">
                                 <Image
@@ -98,7 +105,6 @@ export function Header({
                         </span>
                     </Link>
 
-                    {/* NAV */}
                     <nav className="hidden md:flex items-center gap-1">
                         <button
                             onClick={() => {
@@ -109,7 +115,7 @@ export function Header({
                                 }
                                 setIsMobileMenuOpen(false)
                             }}
-                            className="rounded-lg px-4 py-2 font-medium text-foreground hover:bg-secondary"
+                            className="rounded-lg px-4 py-2 cursor-pointer font-medium text-foreground hover:bg-secondary"
                         >
                             Início
                         </button>
@@ -127,13 +133,15 @@ export function Header({
                                 <button
                                     key={link.href}
                                     onClick={() => handleNavClick(link)}
-                                    className="rounded-lg px-4 py-2 font-medium text-foreground hover:bg-secondary"
+                                    className="rounded-lg px-4 py-2 cursor-pointer font-medium text-foreground hover:bg-secondary"
                                 >
                                     {link.label}
                                 </button>
                             )
                         )}
-                        <Button className="ml-2">Doe Agora</Button>
+                        <Button onClick={() => scrollToSection("#footer")} className="cursor-pointer">
+                            Doe Agora
+                        </Button>
                     </nav>
                 </div>
 

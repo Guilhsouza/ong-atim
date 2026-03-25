@@ -2,7 +2,7 @@ import { Project } from "@/types/projects"
 
 export const projects: Project[] = [
     {
-        id: 1,
+        id: "1",
         title: "Reforma da Escola Esperança",
         shortDescription: "Transformação completa da infraestrutura escolar",
         fullDescription:
@@ -16,7 +16,7 @@ export const projects: Project[] = [
         status: "Concluído",
     },
     {
-        id: 2,
+        id: "2",
         title: "Horta Comunitária Vila Nova",
         shortDescription: "Alimentação saudável e sustentabilidade",
         fullDescription:
@@ -30,7 +30,7 @@ export const projects: Project[] = [
         status: "Concluído",
     },
     {
-        id: 3,
+        id: "3",
         title: "Centro de Capacitação Profissional",
         shortDescription: "Formação profissional para jovens e adultos",
         fullDescription:
@@ -44,7 +44,7 @@ export const projects: Project[] = [
         status: "Concluído",
     },
     {
-        id: 4,
+        id: "4",
         title: "Biblioteca Comunitária Leitura Viva",
         shortDescription: "Acesso à cultura e educação para todos",
         fullDescription:
@@ -58,7 +58,7 @@ export const projects: Project[] = [
         status: "Concluído",
     },
     {
-        id: 5,
+        id: "5",
         title: "Reforma do Centro Comunitário",
         shortDescription: "Espaço de convivência e eventos",
         fullDescription:

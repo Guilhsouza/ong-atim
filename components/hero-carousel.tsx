@@ -34,6 +34,7 @@ export function HeroCarousel({ heroRef }: {
     }
   }
 
+
   return (
     <section className="relative h-screen w-full overflow-hidden" ref={heroRef}>
 
@@ -45,11 +46,13 @@ export function HeroCarousel({ heroRef }: {
         className="object-contain"
       />
 
-      <HeroMenu
-        navLinks={navLinks}
-        handleNavClick={handleNavClick}
-        scrollToSection={scrollToSection}
-      />
+      <div className="invisible md:visible">
+        <HeroMenu
+          navLinks={navLinks}
+          handleNavClick={handleNavClick}
+          scrollToSection={scrollToSection}
+        />
+      </div>
     </section>
   )
 }

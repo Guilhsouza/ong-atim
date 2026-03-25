@@ -5,8 +5,8 @@ import { SponsorsSection } from "@/components/sponsors-section"
 import { ProjectsSection } from "@/components/projects-section"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
-import { useEffect, useRef, useState } from "react"
-import { HeroMenu } from "@/components/heroMenu"
+import { useRef } from "react"
+import { PurposeSection } from "@/components/purpose"
 
 export default function Home() {
   const heroRef = useRef<HTMLElement | null>(null)
@@ -19,6 +19,7 @@ export default function Home() {
         <HeroCarousel heroRef={heroRef} />
         <SponsorsSection />
         <ProjectsSection />
+        <PurposeSection />
         <Footer />
       </main>
 

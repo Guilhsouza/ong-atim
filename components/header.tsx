@@ -68,6 +68,7 @@ export function Header({
         setIsMobileMenuOpen(false)
     }
 
+
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || pathname !== "/"
@@ -100,10 +101,22 @@ export function Header({
                                 />
                             </span>
                         </div>
-                        <span className="text-xl font-bold text-foreground">
+                        <span className="sm:text-sm md:text-xl font-bold text-foreground">
                             Amo Tudo Isso Muito
                         </span>
                     </Link>
+                    <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className={`rounded-lg p-2 md:hidden ${isScrolled || pathname !== "/" ? "text-foreground" : "text-card"
+                            }`}
+                        aria-label="Menu"
+                    >
+                        {isMobileMenuOpen ? (
+                            <X className="h-6 w-6" />
+                        ) : (
+                            <Menu className="h-6 w-6" />
+                        )}
+                    </button>
 
                     <nav className="hidden md:flex items-center gap-1">
                         <button
@@ -144,55 +157,42 @@ export function Header({
                         </Button>
                     </nav>
                 </div>
+                {
+                    isMobileMenuOpen && (
+                        <div className="border-t border-border bg-card z-999 px-4 py-4 md:hidden">
+                            <nav className="flex flex-col gap-2">
+                                {navLinks.map((link) =>
+                                    link.type === "link" ? (
+                                        <Link
+                                            key={link.href}
+                                            href={link.href}
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="rounded-lg px-4 py-3 text-left font-medium text-foreground transition-colors hover:bg-secondary"
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    ) : (
+                                        <button
+                                            key={link.href}
+                                            onClick={() => handleNavClick(link)}
+                                            className="rounded-lg px-4 py-3 text-left font-medium text-foreground transition-colors hover:bg-secondary"
+                                        >
+                                            {link.label}
+                                        </button>
+                                    )
+                                )}
+                                <Button
+                                    onClick={() => scrollToSection("#footer")}
+                                    className="mt-2 w-full"
+                                >
+                                    Doe Agora
+                                </Button>
+                            </nav>
+                        </div>
+                    )
+                }
 
-                <button
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className={`rounded-lg p-2 md:hidden ${isScrolled || pathname !== "/" ? "text-foreground" : "text-card"
-                        }`}
-                    aria-label="Menu"
-                >
-                    {isMobileMenuOpen ? (
-                        <X className="h-6 w-6" />
-                    ) : (
-                        <Menu className="h-6 w-6" />
-                    )}
-                </button>
             </div>
-
-            {
-                isMobileMenuOpen && (
-                    <div className="border-t border-border bg-card px-4 py-4 md:hidden">
-                        <nav className="flex flex-col gap-2">
-                            {navLinks.map((link) =>
-                                link.type === "link" ? (
-                                    <Link
-                                        key={link.href}
-                                        href={link.href}
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="rounded-lg px-4 py-3 text-left font-medium text-foreground transition-colors hover:bg-secondary"
-                                    >
-                                        {link.label}
-                                    </Link>
-                                ) : (
-                                    <button
-                                        key={link.href}
-                                        onClick={() => handleNavClick(link)}
-                                        className="rounded-lg px-4 py-3 text-left font-medium text-foreground transition-colors hover:bg-secondary"
-                                    >
-                                        {link.label}
-                                    </button>
-                                )
-                            )}
-                            <Button
-                                onClick={() => scrollToSection("#footer")}
-                                className="mt-2 w-full"
-                            >
-                                Doe Agora
-                            </Button>
-                        </nav>
-                    </div>
-                )
-            }
         </header >
     )
 }

@@ -30,7 +30,7 @@ const featuredProjects = [
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="bg-secondary py-20">
+    <section id="projects" className=" py-20">
       <div className="mx-auto max-w-6xl px-4">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-balance text-3xl font-bold text-foreground md:text-4xl">

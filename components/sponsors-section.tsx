@@ -3,10 +3,10 @@
 import { Heart } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { sponsors, companies } from "@/data/sponsors"
+import { sponsors } from "@/data/sponsors"
 
 export function SponsorsSection() {
-  const allSponsors = [...sponsors, ...companies]
+  const allSponsors = [...sponsors]
 
   return (
     <section id="sponsors" className="bg-secondary py-20">

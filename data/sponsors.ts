@@ -12,18 +12,6 @@ const sponsors = [
     { name: "Fernando Alves", type: "Padrinho", image: null },
 ]
 
-
-const companies = [
-    { name: "Mercado Bom Preço", logo: null },
-    { name: "Padaria União", logo: null },
-    { name: "Farmácia Vida", logo: null },
-    { name: "Construtora Horizonte", logo: null },
-    { name: "Supermercado Família", logo: null },
-    { name: "Auto Peças Centro", logo: null },
-]
-
-
 export {
     sponsors,
-    companies
 }

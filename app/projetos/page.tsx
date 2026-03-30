@@ -134,7 +134,7 @@ export default function ProjetosPage() {
                         {project.map((project, index) => (
                             <Card
                                 key={project.id}
-                                id={`project-${project.id}`} // ✅ padrão correto
+                                id={`project-${project.id}`}
                                 className="scroll-mt-24 overflow-hidden border-0 bg-card shadow-lg"
                             >
                                 <div className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"}`}>
@@ -172,13 +172,11 @@ export default function ProjetosPage() {
                                                     </p>
                                                     <span className="text-xs text-muted-foreground">Período</span>
                                                 </div>
-
-                                                <div className="flex flex-col items-center">
-                                                    <MapPin className="h-4 w-4 text-primary mb-1" />
-                                                    <p className="font-medium">{project.localizacao}</p>
-                                                    <span className="text-xs text-muted-foreground">Localização</span>
-                                                </div>
-
+                                            </div>
+                                            <div className="flex flex-col items-center mt-4">
+                                                <MapPin className="h-4 w-4 text-primary mb-1" />
+                                                <p className="font-medium">{project.localizacao}</p>
+                                                <span className="text-xs text-muted-foreground">Localização</span>
                                             </div>
                                         </CardContent>
                                     </div>

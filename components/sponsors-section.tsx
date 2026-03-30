@@ -27,10 +27,10 @@ export function SponsorsSection() {
               key={index}
               className="flex flex-col items-center rounded-xl bg-card p-4 shadow-sm transition-shadow hover:shadow-md"
             >
-              {item.image || item.logo ? (
+              {item.image ? (
                 <div className="relative mb-3 h-20 w-20 overflow-hidden rounded-full">
                   <Image
-                    src={item.image || item.logo}
+                    src={item.image}
                     alt={item.name}
                     fill
                     className="object-cover"
@@ -58,7 +58,7 @@ export function SponsorsSection() {
         <div className="text-center">
           <Button
             size="lg"
-            className="text-lg"
+            className="text-lg cursor-pointer"
             onClick={() => {
               document.getElementById("footer")?.scrollIntoView({ behavior: "smooth" })
             }}

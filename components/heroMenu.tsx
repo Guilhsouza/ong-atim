@@ -47,13 +47,13 @@ export function HeroMenu({ navLinks, handleNavClick, scrollToSection }: HeroMenu
                 <button
                     key={link.href}
                     onClick={() => handleClick(link)}
-                    className="rounded-lg cursor-pointer font-bold px-4 py-2 text-md text-black text-left backdrop-blur hover:bg-[#0F3A4A] hover:text-[#F2B41B] transition"
+                    className="rounded-lg cursor-pointer 2xl:text-2xl font-bold px-4 py-2 text-md text-black text-left backdrop-blur hover:bg-[#0F3A4A] hover:text-[#F2B41B] transition"
                 >
                     {link.label}
                 </button>
             ))}
 
-            <Button onClick={() => scrollToSection("#footer")} className="cursor-pointer bg-black/90 text-[#F2B41B] hover:bg-[#0F3A4A] border-transparent border-2 hover:border-[#F7D44A] hover:text-[#F7D44A]">
+            <Button onClick={() => scrollToSection("#footer")} className="cursor-pointer 2xl:text-2xl bg-black/90 text-[#F2B41B] hover:bg-[#0F3A4A] border-transparent border-2 hover:border-[#F7D44A] hover:text-[#F7D44A]">
                 Doe Agora
             </Button>
         </div>
